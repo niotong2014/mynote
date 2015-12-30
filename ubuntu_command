@@ -1,0 +1,13 @@
+1.sudo apt-get install nautilus-open-terminal  如果系统中没有“在终端中打开”，安装此程序,然后重新加载文件管理器（nautilus -q
+2.修改ubuntu启动器的启动顺序
+	方法一：sudo vim /etc/default/grub
+	在打开的文本中修改“GRUB_DEFAULT=0”这一项。比如win7在启动项列表中为第5项，则将0改为4。
+	（这里还可以修改该在启动项列表等待的时间，即修改“GRUB_TIMEOUT=所要等待的秒数”，-1表示不倒计时。）
+	方法二：sudo mv /etc/grub.d/30_os-prober /etc/grub.d/08_os-prober
+	该命令是将etc文件夹下的grub.d文件夹下的30_os-prober文件改名为08_os-prober。（08可以改为06~09都可以）。Ubuntu的启动项相关文件名为“10_....”这样就可以将win7的启动项放在Ubuntu前面，即启动项列表的第一个。由于引导程序默认启动第一个启动项，所以这样就可以先启动win7了。
+
+	无论哪种方法，修改之后必须sudo update-grub，修改才能生效
+
+3.sudo mount -t cifs //192.168.10.230/regan/ /mnt/regan/ -o username=regan,password=XXXXXXX,dir_mode=0777,file_mode=0777  挂载服务器文件到本地
+
+4.sudo sslocal -c /home/thtfit/ss.conf	shadowsocks的linux的启动配置

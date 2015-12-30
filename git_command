@@ -1,0 +1,54 @@
+1. repo批处理
+  1） 打标签
+	.repo/repo/repo  forall -c "pwd;git tag Android_4.4.4_r2_APK_ES_017cd"
+  2） 上传标签
+	.repo/repo/repo  forall -c "pwd;git push --tag"
+
+2.git reset --hard HEAD 执行此命令代码将会还原到HEAD对应的代码
+
+3.git pull 更新代码
+
+4.git status 查询当前项目中的文件和本地仓库中的文件差异
+
+5.git diff 查询当前仓库中的文件的改动
+
+6.git add XXXXX 将改动或者需要提交的代码加到本地仓库中
+
+7.git commit -m "xxxxxx" 提交代码，并添加描述信息
+
+8.git push 将本地代码提交到服务器
+
+9.git branch -a 查看当前项目中所有的分支
+
+10.git checkout XXXXXX 切换到分支
+
+11.git branch -b XXXXXX 新建分支
+
+12.git clean -nxfd 删除未跟踪的文件
+   git clean -nf
+   git clean -nfd
+
+13.分支的创建提交
+    ------------------------------------------------------------
+regan@THTFIT-Compiler:~/a83t/android/frameworks/base$ git config -l
+user.email=regan@thtfit.com
+user.name=regan
+color.ui=auto
+core.repositoryformatversion=0
+core.filemode=true
+remote.lichee.url=git:projects/workdir/allwinner/A83T/android/platform/frameworks/base.git
+remote.lichee.projectname=platform/frameworks/base
+remote.lichee.fetch=+refs/heads/*:refs/remotes/lichee/*
+branch.a83-v1.3-thtfit.remote=lichee
+branch.a83-v1.3-thtfit.merge=a83-v1.3-thtfit
+branch.a83-v1.3-thtfit_KDB_hide_NavigationBar.remote=lichee
+branch.a83-v1.3-thtfit_KDB_hide_NavigationBar.merge=refs/heads/a83-v1.3-thtfit_KDB_hide_NavigationBar
+     ------------------------------------------------------------
+
+    git push lichee a83-v1.3-thtfit_KDB_hide_NavigationBar   提交本地分支a83-v1.3-thtfit_KDB_hide_NavigationBar到远程主分支lichee上
+
+    git branch --set-upstream a83-v1.3-thtfit_KDB_hide_NavigationBar lichee/a83-v1.3-thtfit_KDB_hide_NavigationBar  关联本地分支与远程分支
+
+14.git clone XXXXX 克隆仓库
+
+15.git config -l 查看git的相关配置

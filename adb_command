@@ -1,0 +1,8 @@
+1.adb remount 获取adb的root权限，比如想进入/system/app中删除软件登陆之前先执行此命令，才有权限删除软件
+2.adb shell 进入adb终端
+3.adb connect 192.168.70.89:9351  通过网络连接adb,之后可以执行adb shell 进入终端
+4.adb logcat 查看adb的log信息
+5.adb pull XXXXX  XXXXX 前面为android设备中的文件的路径名，后面为文件存放位置
+6.adb push XXXXX  XXXXX 前面为本地文件的路径名，后面为android设备的存放位置
+7.adb devices
+
