@@ -11,3 +11,10 @@
 3.sudo mount -t cifs //192.168.10.230/regan/ /mnt/regan/ -o username=regan,password=XXXXXXX,dir_mode=0777,file_mode=0777  挂载服务器文件到本地
 
 4.sudo sslocal -c /home/thtfit/ss.conf	shadowsocks的linux的启动配置
+
+5.配置ubuntu的JDK和JRE的位置
+ sudo update-alternatives --install "/usr/bin/java" "java" "/usr/local/java/jdk1.6.0_45/bin/java" 1
+ sudo update-alternatives --install "/usr/bin/javac" "javac" "/usr/local/java/jdk1.6.0_45/bin/javac" 1
+ sudo update-alternatives --install "/usr/bin/javaws" "javaws" "/usr/local/java/jdk1.6.0_45/bin/javaws" 1
+
+6.scp -P 26169 jdk-8u45-linux-i586.gz root@104.224.169.145:./jdk-8u45-linux-i586.gz  (从ssh服务器上下载或者上传文件，参数是将前面一个弄到后面一个)
