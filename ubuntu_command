@@ -18,3 +18,15 @@
  sudo update-alternatives --install "/usr/bin/javaws" "javaws" "/usr/local/java/jdk1.6.0_45/bin/javaws" 1
 
 6.scp -P 26169 jdk-8u45-linux-i586.gz root@104.224.169.145:./jdk-8u45-linux-i586.gz  (从ssh服务器上下载或者上传文件，参数是将前面一个弄到后面一个)
+
+7.安装sslocal科学上网  1.sudo apt-get install python-pip 2.sudo pip install shadowsocks 3. sudo sslocal -c /home/niotong/mic64.conf & >> /dev/null (脚本ss_start.sh中的内容) 4.sudo vim /etc/rc.local 在exit 0 之前添加sudo sh /home/niotong/ss_start.sh,这样就能够开机启动sslocal了.
+以下为mic64.conf中的内容
+{
+	"server":"104.224.169.159",
+	"server_port":28388,
+	"local_port":8091,
+	"password":"31415926sb",
+	"timeout":60,
+	"method":"aes-256-cfb"
+}
+配置firefox使用FoxyProxy代理
