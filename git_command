@@ -21,6 +21,8 @@
 9.git branch -a 查看当前项目中所有的分支
 
 10.git checkout XXXXXX 切换到分支
+   git checkout -b XXXXX 新建XXXXX分支并切换过去
+   git checkout -- XXXXXX 丢弃工作区某个文件的修改
 
 11.git branch -b XXXXXX 新建分支
 
@@ -52,3 +54,9 @@ branch.a83-v1.3-thtfit_KDB_hide_NavigationBar.merge=refs/heads/a83-v1.3-thtfit_K
 14.git clone XXXXX 克隆仓库
 
 15.git config -l 查看git的相关配置
+
+16.git merge XXXXX  将XXXX的分支合并到当前分区
+
+17.在某个分支上的修改进行到一半并且你还不能提交当前的代码，这时你可以执行git stash将工作的内容存起来，当完成其他分支上的工作之后，可以切换到之前工作到一般的分支git stash list查看之前的保存，使用git stash apply来恢复，但恢复之后stash内容并不删除，可以使用git stash drop来删除。或者使用git stash pop恢复并删除stash内容。当有多次stash的时候，使用git stash apply stash@{0}
+
+18 git log --graph 图标的形式查看提交信息
