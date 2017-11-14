@@ -1,1 +1,1 @@
-Hello mynote
+# this is niotong's note
