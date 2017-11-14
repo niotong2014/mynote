@@ -60,3 +60,7 @@ branch.a83-v1.3-thtfit_KDB_hide_NavigationBar.merge=refs/heads/a83-v1.3-thtfit_K
 17.在某个分支上的修改进行到一半并且你还不能提交当前的代码，这时你可以执行git stash将工作的内容存起来，当完成其他分支上的工作之后，可以切换到之前工作到一般的分支git stash list查看之前的保存，使用git stash apply来恢复，但恢复之后stash内容并不删除，可以使用git stash drop来删除。或者使用git stash pop恢复并删除stash内容。当有多次stash的时候，使用git stash apply stash@{0}
 
 18 git log --graph 图标的形式查看提交信息
+	优化git log  可以使用如下命令git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	当然你可以给该命令取个别名git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit" 然后执行git lg就等同于上面的命令了
+
+19.patch -p0 < XXXXX.patch	打补丁
