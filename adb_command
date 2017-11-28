@@ -5,4 +5,7 @@
 5.adb pull XXXXX  XXXXX 前面为android设备中的文件的路径名，后面为文件存放位置
 6.adb push XXXXX  XXXXX 前面为本地文件的路径名，后面为android设备的存放位置
 7.adb devices
+8.adb shell am start -n {包(package)名}/{包名}.{activity} 启动activity
+9.adb shell am startservice -n {包(package)名}/{包名}.{service}	启动服务
+9.adb shell am broadcast -a com.android.test --es test_string "this is test string" --ei test_int 100 --ez test_boolean true 发送广播，分别携带string  int   boolean型的参数
 
