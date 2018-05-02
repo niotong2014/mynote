@@ -19,9 +19,11 @@
 8.git push 将本地代码提交到服务器
 
 9.git branch -a 查看当前项目中所有的分支
+  git branch -vv 将所有本地分支列出来并且包含更多的信息，如每个分支正在跟踪哪一个远程分支与本地分支是否领先，是否落后等
 
 10.git checkout XXXXXX 切换到分支
    git checkout -b XXXXX 新建XXXXX分支并切换过去
+   git checkout -b serverfix  origin/serverfix 新建serverfix分支并切换过去并使其跟踪远程分支origin/serverfix
    git checkout -- XXXXXX 丢弃工作区某个文件的修改
 
 11.git branch -b XXXXXX 新建分支
@@ -29,6 +31,7 @@
 12.git clean -nxfd 删除未跟踪的文件
    git clean -nf
    git clean -nfd
+   加上-n 之后表示演习一下告诉你要删掉什么,-f 表示强制删除或确认删除  -x表示删除未跟踪
 
 13.分支的创建提交
     ------------------------------------------------------------
@@ -47,7 +50,8 @@ branch.a83-v1.3-thtfit_KDB_hide_NavigationBar.remote=lichee
 branch.a83-v1.3-thtfit_KDB_hide_NavigationBar.merge=refs/heads/a83-v1.3-thtfit_KDB_hide_NavigationBar
      ------------------------------------------------------------
 
-    git push lichee a83-v1.3-thtfit_KDB_hide_NavigationBar   提交本地分支a83-v1.3-thtfit_KDB_hide_NavigationBar到远程主分支lichee上
+    git push lichee a83-v1.3-thtfit_KDB_hide_NavigationBar   提交本地分支a83-v1.3-thtfit_KDB_hide_NavigationBar到远程仓库lichee的a83-v1.3-thtfit_KDB_hide_NavigationBar分支上（没有该分支则新建）
+    git push lichee a83-v1.3-thtfit_KDB_hide_NavigationBar0:a83-v1.3-thtfit_KDB_hide_NavigationBar1   提交本地分支a83-v1.3-thtfit_KDB_hide_NavigationBar0到远程仓库lichee的a83-v1.3-thtfit_KDB_hide_NavigationBar1分支上（没有该分支则新建）
 
     git branch --set-upstream a83-v1.3-thtfit_KDB_hide_NavigationBar lichee/a83-v1.3-thtfit_KDB_hide_NavigationBar  关联本地分支与远程分支
 
@@ -64,3 +68,9 @@ branch.a83-v1.3-thtfit_KDB_hide_NavigationBar.merge=refs/heads/a83-v1.3-thtfit_K
 	当然你可以给该命令取个别名git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit" 然后执行git lg就等同于上面的命令了
 
 19.patch -p0 < XXXXX.patch	打补丁
+
+20.git commit --amend  此命令用于当你commit之后发现有些文件没有添加，可以git add **** ,然后之后执行该命令。
+
+21.git reset HEAD <file> 此命令用于当你git add ****,然后发现某个文件你不想git add，可以用该命令撤销将该文件add到暂存区
+
+22.git format-pathch -1  节点A  会生成补丁1个补丁包，是打完补丁包会成为节点A的代码 ，生成的补丁包尽量使用 git apply ***.patch 或者git am ****.patch 不推荐使用patch -p1 < ****.patch 
