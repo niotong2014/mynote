@@ -30,3 +30,6 @@
 	"method":"aes-256-cfb"
 }
 配置firefox使用FoxyProxy代理
+
+
+8.有时候需要将打文件切分成多个小文键，可以使用split命令，该命令我只记录自己常用的方法，比如有个android_orig.tgz这个打文件，执行split -b 1024m android_orig.tgz android_part_  执行完命令之后会生成android_part_aa android_part_ab   android_part_ac 等若干个小文件，拼接时使用cat android_part_* > android_orig.tgz就可以拼接完成

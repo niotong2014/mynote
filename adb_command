@@ -8,4 +8,7 @@
 8.adb shell am start -n {包(package)名}/{包名}.{activity} 启动activity
 9.adb shell am startservice -n {包(package)名}/{包名}.{service}	启动服务
 9.adb shell am broadcast -a com.android.test --es test_string "this is test string" --ei test_int 100 --ez test_boolean true 发送广播，分别携带string  int   boolean型的参数
+10.adb shell am force-stop {包名} 关掉应用程序
+11.adb install [-l] [-r] [-s] ****.apk  安装apk程序，-l表示锁定该程序   -r表示重新安装程序，保存数据（我一般用这个），-s表示安装在SD卡内，而不是设备内部存储 -d表示允许降级覆盖安装 -t表示允许安装测试包
+12.adb uninstall [-k] <package>  卸载程序，-k表示保留安装包的数据和缓存目录
 
