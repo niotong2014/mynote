@@ -11,4 +11,7 @@
 10.adb shell am force-stop {包名} 关掉应用程序
 11.adb install [-l] [-r] [-s] ****.apk  安装apk程序，-l表示锁定该程序   -r表示重新安装程序，保存数据（我一般用这个），-s表示安装在SD卡内，而不是设备内部存储 -d表示允许降级覆盖安装 -t表示允许安装测试包
 12.adb uninstall [-k] <package>  卸载程序，-k表示保留安装包的数据和缓存目录
+13.adb shell进设备终端
+	mount -o rw -t vfat /dev/block/by-name/private /mnt/private (将private分区挂载到/mnt/private目录下)
+	mount -o remount,rw /dev/block/by-name/private /mnt/private (将private分区重新以rw的权限挂载)
 
