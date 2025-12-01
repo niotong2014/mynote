@@ -1,0 +1,7 @@
+﻿我也不写Android.mk的语法的知识了，网上一搜一大把。本人目前手上有一块友善之臂生产的samsung的4412的开发板，根据编译android系统发现，有时候在packages/apps/下添加来自己的软件，但是最终编译镜像的时候发现这个软件没有编译。于是我修改原本Android.mk的LOCAL_MODULE_TAGS := optional 为LOCAL_MODULE_TAGS := eng。然后这个软件就在编译系统的时候编译了。在packages/apps/下的系统的软件LOCAL_MODULE_TAGS 这个值的属性为optional的是会编译的。同时Launcher3这个软件有个LOCAL_OVERRIDES_PACKAGES :=Launcher2这个属性，而在system/priv-app/中只有Launcher2/Launcher2.apk这个软件没有Launcher3.apk。但是经过我测试结果恰恰相反LOCAL_OVERRIDES_PACKAGES这个属性的值的软件没有被编译。
+
+按照我个人理解，android系统编译的时候先是一次将所有Android.mk加载。以LOCAL_PACKAGE_NAME（apk的名字）或者LOCAL_MODULE（动态库.so或者静态库.a等）来对应每一个Android.mk.根据LOCAL_MODULE_TAGS来判断是否使用这个Android.mk。像LOCAL_MODULE的mk需要使用PRODUCT_PACKAGES来让它编译进系统中。
+
+LOCAL_SDK_VERSION ：=current 会导致无法使用hide的API
+
+LOCAL_PRIVILEGED_MODULE := true会使得编译出来的apk生成目录为/system/priv-app/
