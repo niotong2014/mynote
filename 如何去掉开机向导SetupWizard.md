@@ -1,0 +1,2 @@
+# 如何去掉开机向导SetupWizard
+标准的Android系统首次开机之后，显示的第一个应用应该是开机向导（SetupWizard.apk）,该apk会让你设置wifi等等，该apk只执行这一次，有些客户要求去掉这个apk，所以只需要找到该apk在哪里编译进系统中，然后去掉它就行了。
