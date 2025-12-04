@@ -64,16 +64,21 @@ Android Launcher 开发相关技术说明，包括：
 - 应用程序自定义（appscustomize）配置
 - 启动提示（cling）和布局文件（land/port）配置
 
-## 构建和开发命令
+## 开发命令和工具
 
-### 可用脚本命令
-- `bash createlnfile.sh` - 为 Android 交叉编译工具链创建符号链接
-- `bash shell_sed.sh` - 路径检测工具（包含注释掉的 Git 状态操作）
+### Shell 脚本命令
+- `bash createlnfile.sh` - 为 Android 交叉编译工具链文件创建符号链接（将 arm-linux-androideabi-* 链接为 arm-linux-eabi-*）
+- `bash shell_sed.sh` - 路径检测工具（显示当前脚本路径和工作路径，包含注释掉的 Git 状态操作）
 
-### 实际的"构建"命令
-由于这是一个个人技术笔记仓库，没有传统的构建系统。实际的开发命令主要是：
+### Vim 快捷操作
+根据 vimrc 配置，支持以下编译运行快捷键：
+- `<F5>` - 编译运行：C/C++/Java/Shell/Python 代码的编译执行
+- `<F8>` - 调试模式：C/C++ 代码的 GDB 调试
+- `<F7>` - 打开 NERDTree 文件浏览器
+- `<F2>` - 删除空行
+- `<F12>` - 代码格式化
 
-**Android 开发相关：**
+### Android 开发命令
 ```bash
 # 应用开发
 adb install [-r] app.apk           # 安装应用
@@ -87,12 +92,6 @@ adb push local.file /system/path  # 推送文件到系统
 adb pull /system/path local.file  # 从系统拉取文件
 ```
 
-**代码编译（通过 Vim 配置）：**
-```bash
-# 在 Vim 中使用 F5 键编译运行（根据 vimrc 配置）
-:call CompileRunGcc()  # C/C++ 编译运行
-```
-
 ## 开发环境
 
 此仓库设计用于支持在 Android、Linux/Ubuntu 和 macOS 等多个平台上的开发。配置文件针对跨平台开发工作进行了优化，特别是 Android 系统开发和嵌入式编程。
@@ -100,26 +99,47 @@ adb pull /system/path local.file  # 从系统拉取文件
 ## 项目架构
 
 **知识库架构模式：**
-- **分层文档结构**：原始命令参考 → 格式化 Markdown 手册 → Vim 配置
-- **技术栈覆盖**：Git 版本控制 → Android 调试 → 系统管理 → 编辑器配置
-- **开发工作流**：Android 系统开发 → 跨平台工具配置 → 命令自动化
+- **分层文档结构**：原始技术文档 → 格式化 Markdown 手册 → 配置文件 → 开发脚本
+- **技术栈覆盖**：Android 系统开发 → Linux 内核驱动 → Git 版本控制 → 跨平台工具配置
+- **开发工作流**：Android 系统移植 → 驱动开发 → 系统调试 → 文档记录
 
 **核心知识领域：**
-1. **Android 开发**：ADB 操作、Launcher 开发、系统调试
-2. **版本控制**：Git 高级操作、分支管理、补丁处理
-3. **系统管理**：Ubuntu 配置、网络挂载、环境设置
-4. **开发工具**： Vim 插件生态、Shell 脚本自动化
+1. **Android 系统开发**：固件生成、系统移植、Launcher 开发、ADB 调试
+2. **Linux 内核驱动**：字符设备驱动、触摸屏驱动、LCD 驱动、音频编解码器
+3. **嵌入式系统**：全志 Allwinner、晨讯 A33、晶晨 A133 平台开发
+4. **系统级调试**：功耗管理、WiFi/蓝牙调试、充电控制、硬件适配
 
 ## 常用使用模式
 
 使用此仓库时：
-1. 查阅 `git_command.md` 进行版本控制操作（推荐）
-2. 使用 `adb_command.md` 进行 Android 开发任务（推荐）
-3. 应用 Vim 配置以增强编辑功能
-4. 根据需要遵循 `ubuntu_command.md` 系统管理指南（推荐）
-5. 使用 `bash scriptname.sh` 运行 shell 脚本
-6. 参考 `acquisitionaboutlauncher` 进行 Android Launcher 开发
+1. **Android 系统开发**：参考 `adb_command.md`、`Android编译错误.md`、`A523 Android13 camera测试总结.md` 等文档
+2. **驱动开发**：查阅 `虚拟字符设备驱动的编写.md`、`touchpanel驱动.md`、`LCD驱动分析.md`、`codec音频编解码器驱动分析.md`
+3. **硬件平台适配**：参考全志 `A523`、晨讯 `A33`、晶晨 `A133` 等平台特定文档
+4. **系统调试**：使用 `kernel编译时出现的error.md`、`init.rc语法解析.md`、`WifiStateMachine分析.md` 等调试指南
+5. **开发工具**：应用 Vim 配置，使用 `createlnfile.sh` 脚本，参考 `git_command.md` 进行版本控制
+6. **系统配置**：使用 `ubuntu_command.md` 进行系统管理，参考 `mac环境配置.md` 进行 macOS 配置
 
-## 笔记内容
+## 文档分类索引
 
-该仓库作为活跃的知识库，包含定期更新的开发笔记、命令参考和系统配置，用于支持专业的软件开发工作流程。
+**Android 系统开发**：
+- 固件生成与烧录：`Android烧录的固件都是怎么生成的.md`
+- 系统编译：`Android.mk编译控制.md`、`Android.mk不编译odex文件.md`
+- 权限管理：`Android的权限说明（apk的运行权限和sepolicy）.md`
+
+**硬件驱动开发**：
+- 触摸屏：`touchpanel驱动.md`
+- 显示系统：`LCD驱动分析.md`、`MIPI DSI的配置.md`
+- 音频系统：`codec音频编解码器驱动分析.md`、`I2S协议.md`
+- 电源管理：`AXP707充电相关的理解.md`、`如何调整CPU的工作模式.md`
+
+**系统调试与优化**：
+- 开机优化：`A33 Android6.0开机时间优化记录.md`
+- 功耗管理：`如何让系统不进去深度休眠.md`
+- 网络调试：`Linux如何验证AP6212(AP6236)的bluetooth功能.md`
+- WiFi 调试：`分析WifiStateMachine如何启动wifi驱动.md`
+
+**跨平台开发**：
+- JNI 开发：`jni基本编程.md`
+- Java 开发：`java的命名规则.md`、`jdk环境配置.md`
+- AIDL：`AIDL示例编程.md`
+- C++：`代理模式和回调.md`、`排序算法.md`
